@@ -1,54 +1,70 @@
 /*
-===========================================================
- GameSir Cyclone 2 - Gamepad Viewer Custom Skin
- Shadow Black / RGB Red
- Compatível com Gamepad Viewer
-===========================================================
+============================================================
+ GameSir Cyclone 2
+ GPV / GamePad Viewer Custom Skin
+ Shadow Black + RGB Red
+============================================================
 
- COMO USAR:
+ Compatibilidade:
+ - GamePad Viewer
+ - GPV 2 Beta / Custom CSS URL
 
- https://gamepadviewer.com/?p=1&css=URL_DO_ARQUIVO.css
-
- O Gamepad Viewer utiliza a classe .custom para skins
- carregados através de css=.
-
-===========================================================
+ Estrutura baseada nos elementos reais do GamePad Viewer:
+ .controller.custom
+ .triggers
+ .trigger
+ .bumpers
+ .bumper
+ .quadrant
+ .arrows
+ .back
+ .start
+ .abxy
+ .button
+ .sticks
+ .stick
+ .dpad
+ .face
+============================================================
 */
 
-/* =========================================================
-   VARIÁVEIS
-========================================================= */
+
+/* ==========================================================
+   PALETA
+========================================================== */
 
 :root {
-    --body-1: #17181b;
-    --body-2: #24262a;
-    --body-3: #303238;
+    --c-body-dark: #0b0c0e;
+    --c-body: #17191c;
+    --c-body-mid: #25282d;
+    --c-body-light: #35383e;
 
-    --edge: #3b3e44;
-    --edge-dark: #0b0c0e;
+    --c-edge: #4a4d53;
+    --c-edge-light: #62666d;
 
-    --button: #101114;
-    --button-hover: #191a1d;
-    --button-pressed: #32343a;
+    --c-button: #15171a;
+    --c-button-light: #292c31;
+    --c-button-border: #50545b;
 
-    --text: #eeeeee;
-    --text-dark: #92969d;
+    --c-white: #f4f4f4;
+    --c-text: #d8dadd;
 
-    --rgb: #ff2424;
-    --rgb-soft: rgba(255, 36, 36, 0.55);
-    --rgb-weak: rgba(255, 36, 36, 0.18);
+    --c-rgb: #ff1f2d;
+    --c-rgb-light: rgba(255, 31, 45, 0.75);
+    --c-rgb-mid: rgba(255, 31, 45, 0.35);
+    --c-rgb-low: rgba(255, 31, 45, 0.15);
 
-    --gold: #c9a64b;
+    --c-gold: #d0aa54;
 
-    --shadow:
-        0 22px 45px rgba(0, 0, 0, 0.60),
-        0 5px 13px rgba(0, 0, 0, 0.45);
+    --shadow-controller:
+        0 24px 45px rgba(0,0,0,0.60),
+        0 9px 18px rgba(0,0,0,0.45);
 }
 
 
-/* =========================================================
-   CORPO PRINCIPAL
-========================================================= */
+/* ==========================================================
+   CONTROLE
+========================================================== */
 
 .controller.custom {
     position: relative;
@@ -59,124 +75,132 @@
     margin: 0;
     padding: 0;
 
+    box-sizing: border-box;
+
     overflow: hidden;
 
     background:
         radial-gradient(
-            circle at 50% 32%,
-            rgba(255,255,255,0.08) 0%,
-            rgba(255,255,255,0.025) 30%,
-            transparent 56%
+            ellipse at 50% 28%,
+            rgba(255,255,255,0.075) 0%,
+            rgba(255,255,255,0.025) 28%,
+            transparent 58%
         ),
         linear-gradient(
-            145deg,
-            var(--body-3) 0%,
-            var(--body-2) 34%,
-            var(--body-1) 70%,
-            #101114 100%
+            150deg,
+            var(--c-body-light) 0%,
+            var(--c-body-mid) 27%,
+            var(--c-body) 58%,
+            var(--c-body-dark) 100%
         );
 
-    border-radius:
-        135px 135px
-        155px 155px /
-        120px 120px
-        175px 175px;
-
     border:
-        3px solid var(--edge);
+        3px solid var(--c-edge);
 
-    box-shadow: var(--shadow);
+    border-radius:
+        125px 125px
+        155px 155px /
+        115px 115px
+        172px 172px;
 
-    box-sizing: border-box;
+    box-shadow:
+        var(--shadow-controller),
 
-    transform-origin: top left;
+        inset 0 1px 0 rgba(255,255,255,0.08),
+
+        inset 0 -30px 45px rgba(0,0,0,0.18);
 }
 
 
-/* =========================================================
+/* ==========================================================
    CONTORNO INTERNO
-========================================================= */
+========================================================== */
 
 .controller.custom::before {
     content: "";
 
     position: absolute;
 
-    left: 17px;
-    right: 17px;
-    top: 17px;
-    bottom: 17px;
+    left: 15px;
+    right: 15px;
+    top: 15px;
+    bottom: 15px;
 
     pointer-events: none;
 
+    border:
+        1px solid rgba(255,255,255,0.055);
+
     border-radius:
-        120px 120px
-        140px 140px /
-        105px 105px
+        112px 112px
+        143px 143px /
+        102px 102px
         155px 155px;
 
-    border: 1px solid rgba(255,255,255,0.055);
-
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.06),
-        inset 0 -15px 35px rgba(0,0,0,0.23);
+        inset 0 1px 0 rgba(255,255,255,0.05),
+        inset 0 -20px 35px rgba(0,0,0,0.18);
 }
 
 
-/* =========================================================
-   RGB DAS EMPUNHADURAS
-========================================================= */
+/* ==========================================================
+   RGB INFERIOR
+========================================================== */
 
 .controller.custom::after {
     content: "";
 
     position: absolute;
 
-    left: 42px;
-    right: 42px;
-    bottom: 36px;
+    left: 78px;
+    right: 78px;
+    bottom: 27px;
 
-    height: 19px;
+    height: 7px;
 
     pointer-events: none;
+
+    border-radius: 50%;
 
     background:
         linear-gradient(
             90deg,
             transparent 0%,
-            transparent 2%,
-            var(--rgb) 14%,
-            rgba(255,36,36,0.2) 29%,
-            transparent 35%,
-            transparent 65%,
-            rgba(255,36,36,0.2) 71%,
-            var(--rgb) 86%,
-            transparent 98%
+            transparent 3%,
+
+            rgba(255,31,45,0.05) 8%,
+            var(--c-rgb) 17%,
+            rgba(255,31,45,0.35) 29%,
+
+            transparent 38%,
+            transparent 62%,
+
+            rgba(255,31,45,0.35) 71%,
+            var(--c-rgb) 83%,
+            rgba(255,31,45,0.05) 92%,
+
+            transparent 97%
         );
 
-    filter:
-        blur(5px)
-        drop-shadow(0 0 8px var(--rgb));
+    box-shadow:
+        0 0 5px var(--c-rgb-light),
+        0 0 14px var(--c-rgb-mid);
 
-    opacity: 0.75;
-
-    border-radius: 50%;
+    opacity: 0.82;
 }
 
 
-/* =========================================================
-   ESTADO DESCONECTADO
-========================================================= */
+/* ==========================================================
+   DESCONTECTADO
+========================================================== */
 
 .custom.disconnected {
     background:
         linear-gradient(
             145deg,
-            #111214,
-            #202226
+            #0d0e10,
+            #1c1e21
         );
-
-    filter: grayscale(0.4);
 }
 
 .custom.disconnected div {
@@ -184,21 +208,20 @@
 }
 
 
-/* =========================================================
-   TRIGGERS - LT / RT
-========================================================= */
+/* ==========================================================
+   TRIGGERS
+========================================================== */
 
 .custom .triggers {
     position: absolute;
 
+    width: 586px;
+    height: 65px;
+
     left: 99px;
     top: 4px;
-
-    width: 586px;
-    height: 69px;
-
-    z-index: 5;
 }
+
 
 .custom .trigger {
     width: 86px;
@@ -206,115 +229,119 @@
 
     box-sizing: border-box;
 
-    border-radius: 16px 16px 21px 21px;
+    opacity: 0;
+
+    border:
+        2px solid #3b3f45;
+
+    border-radius:
+        15px 15px
+        21px 21px;
 
     background:
         linear-gradient(
             180deg,
-            rgba(255,255,255,0.055),
-            rgba(0,0,0,0.22)
+            rgba(255,255,255,0.06),
+            rgba(0,0,0,0.23)
         );
 
-    border: 2px solid #3a3d42;
-
-    opacity: 0;
-
-    transition:
-        opacity 0.07s linear,
-        box-shadow 0.07s linear,
-        transform 0.07s linear;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06);
 }
+
 
 .custom .trigger.left {
     float: left;
 }
 
+
 .custom .trigger.right {
     float: right;
 }
 
+
 .custom .trigger.pressed {
     opacity: 1;
 
+    border-color:
+        var(--c-rgb);
+
     box-shadow:
-        inset 0 0 10px rgba(255,255,255,0.08),
-        0 0 9px var(--rgb-soft);
-
-    border-color: rgba(255,36,36,0.65);
-
-    transform: translateY(2px);
+        inset 0 -5px 9px rgba(0,0,0,0.30),
+        0 0 12px var(--c-rgb-mid);
 }
 
 
-/* =========================================================
-   BUMPERS - LB / RB
-========================================================= */
+/* ==========================================================
+   BUMPERS
+========================================================== */
 
 .custom .bumpers {
     position: absolute;
 
-    left: 91px;
-    top: 71px;
+    width: 586px;
+    height: 28px;
 
-    width: 602px;
-    height: 33px;
-
-    z-index: 8;
+    left: 99px;
+    top: 72px;
 }
+
 
 .custom .bumper {
     width: 89px;
     height: 28px;
 
+    box-sizing: border-box;
+
     opacity: 1;
 
-    box-sizing: border-box;
+    border:
+        2px solid var(--c-edge);
+
+    border-radius: 10px;
 
     background:
         linear-gradient(
             180deg,
-            #55585e 0%,
-            #2c2f34 50%,
-            #1b1d20 100%
+            #4c5056 0%,
+            #2b2e33 48%,
+            #15171a 100%
         );
 
-    border:
-        2px solid #45484f;
-
-    border-radius: 10px;
-
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.12),
-        0 2px 4px rgba(0,0,0,0.35);
-
-    transition:
-        transform 0.07s ease,
-        box-shadow 0.07s ease,
-        border-color 0.07s ease;
+        inset 0 1px 0 rgba(255,255,255,0.09),
+        0 3px 5px rgba(0,0,0,0.40);
 }
+
 
 .custom .bumper.left {
     float: left;
+
+    transform:
+        rotateY(180deg);
 }
+
 
 .custom .bumper.right {
     float: right;
 }
 
-.custom .bumper.pressed {
-    transform: translateY(3px);
 
-    border-color: var(--rgb);
+.custom .bumper.pressed {
+    opacity: 1;
+
+    border-color:
+        var(--c-rgb);
 
     box-shadow:
-        inset 0 2px 5px rgba(0,0,0,0.5),
-        0 0 11px var(--rgb-soft);
+        inset 0 -3px 6px rgba(0,0,0,0.50),
+        0 0 10px var(--c-rgb-mid);
 }
 
 
-/* =========================================================
-   INDICADOR CENTRAL / HOME
-========================================================= */
+/* ==========================================================
+   INDICADOR CENTRAL
+========================================================== */
 
 .custom .quadrant {
     position: absolute;
@@ -325,39 +352,41 @@
     left: 363px;
     top: 122px;
 
-    z-index: 12;
+    box-sizing: border-box;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            #272a2f 0 34%,
-            #15171a 35% 53%,
-            #08090b 54% 67%,
+            #3b3e43 0%,
+            #25282d 31%,
+            #121417 59%,
+            #07080a 67%,
             transparent 68%
         );
 
     border:
-        2px solid #44474d;
+        2px solid #4c5056;
 
     box-shadow:
-        inset 0 0 9px rgba(255,255,255,0.07),
-        0 0 0 2px rgba(0,0,0,0.35),
-        0 0 8px var(--rgb-weak);
+        inset 0 1px 5px rgba(255,255,255,0.06),
+        inset 0 -5px 9px rgba(0,0,0,0.60),
+
+        0 0 7px var(--c-rgb-low);
 }
 
-
-/* player indicators */
 
 .custom .p0 {
     background-color: transparent;
 
     box-shadow:
-        inset 0 0 9px rgba(255,255,255,0.07),
-        0 0 0 2px rgba(0,0,0,0.35),
-        0 0 12px var(--rgb-soft);
+        inset 0 1px 5px rgba(255,255,255,0.06),
+        inset 0 -5px 9px rgba(0,0,0,0.60),
+
+        0 0 12px var(--c-rgb-light);
 }
+
 
 .custom .p1,
 .custom .p2,
@@ -366,59 +395,62 @@
 }
 
 
-/* =========================================================
-   BOTÕES BACK / START
-========================================================= */
+/* ==========================================================
+   START / BACK
+========================================================== */
 
 .custom .arrows {
     position: absolute;
 
-    width: 185px;
-    height: 30px;
+    width: 205px;
+    height: 34px;
 
-    left: 299px;
-    top: 202px;
+    top: 245px;
+    left: 291px;
 
-    z-index: 15;
+    display: block;
 }
+
 
 .custom .back,
 .custom .start {
-    width: 54px;
-    height: 29px;
+    width: 64px;
+    height: 30px;
 
     box-sizing: border-box;
 
     border-radius: 12px;
 
+    border:
+        1px solid #50545a;
+
     background:
         linear-gradient(
             180deg,
-            #383b40,
-            #1d1f23
+            #3c4046 0%,
+            #24272c 55%,
+            #15171a 100%
         );
 
-    border:
-        1px solid #50535a;
-
-    color: var(--text);
-
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.08),
-        0 3px 6px rgba(0,0,0,0.4);
+        inset 0 1px 0 rgba(255,255,255,0.09),
+        0 3px 7px rgba(0,0,0,0.40);
 
     transition:
-        transform 0.07s ease,
-        box-shadow 0.07s ease;
+        transform 0.05s linear,
+        box-shadow 0.05s linear;
 }
+
 
 .custom .back {
     float: left;
 }
 
+
 .custom .start {
     float: right;
 }
+
 
 .custom .back::after {
     content: "−";
@@ -427,12 +459,17 @@
 
     text-align: center;
 
-    line-height: 25px;
+    line-height: 27px;
 
-    font-size: 18px;
+    color: var(--c-text);
 
-    color: #b9bcc1;
+    font-family: Arial, sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 700;
 }
+
 
 .custom .start::after {
     content: "☰";
@@ -441,118 +478,81 @@
 
     text-align: center;
 
-    line-height: 26px;
+    line-height: 27px;
+
+    color: var(--c-text);
+
+    font-family: Arial, sans-serif;
 
     font-size: 12px;
 
-    color: #b9bcc1;
+    font-weight: 700;
 }
+
 
 .custom .back.pressed,
 .custom .start.pressed {
     transform: translateY(3px);
 
+    border-color:
+        var(--c-rgb);
+
     box-shadow:
-        inset 0 2px 5px rgba(0,0,0,0.45),
-        0 0 10px var(--rgb-soft);
+        inset 0 3px 5px rgba(0,0,0,0.55),
+        0 0 10px var(--c-rgb-mid);
 }
 
 
-/* =========================================================
+/* ==========================================================
    ABXY
-========================================================= */
+========================================================== */
 
 .custom .abxy {
     position: absolute;
 
-    width: 215px;
-    height: 215px;
+    width: 204px;
+    height: 205px;
 
-    left: 521px;
-    top: 149px;
-
-    z-index: 20;
+    top: 156px;
+    left: 538px;
 }
+
 
 .custom .button {
     position: absolute;
 
-    width: 61px;
-    height: 61px;
+    width: 62px;
+    height: 62px;
 
     box-sizing: border-box;
 
     border-radius: 50%;
 
+    border:
+        2px solid var(--c-button-border);
+
     background:
         radial-gradient(
             circle at 35% 28%,
-            #34373c 0%,
-            #1e2024 42%,
-            #0c0d0f 100%
+            #3a3d42 0%,
+            #282b30 33%,
+            #17191c 63%,
+            #0b0c0e 100%
         );
-
-    border:
-        2px solid #42454b;
 
     box-shadow:
         inset 0 2px 3px rgba(255,255,255,0.08),
-        inset 0 -3px 5px rgba(0,0,0,0.65),
-        0 3px 5px rgba(0,0,0,0.45);
+        inset 0 -4px 7px rgba(0,0,0,0.65),
+        0 3px 6px rgba(0,0,0,0.42);
 
     transition:
-        transform 0.06s ease,
-        border-color 0.06s ease,
-        box-shadow 0.06s ease;
+        transform 0.05s linear,
+        box-shadow 0.05s linear,
+        border-color 0.05s linear;
 }
 
 
-/* letras ABXY */
-
-.custom .button::after {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    line-height: 57px;
-
-    text-align: center;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 19px;
-
-    font-weight: 700;
-
-    color: #dfe1e4;
-
-    text-shadow:
-        0 1px 2px #000;
-}
-
-.custom .a {
-    left: 75px;
-    top: 150px;
-}
-
-.custom .b {
-    right: 0;
-    top: 75px;
-}
-
-.custom .x {
-    left: 0;
-    top: 75px;
-}
-
-.custom .y {
-    left: 75px;
-    top: 0;
-}
+/* letras dos botões */
 
 .custom .a::after {
     content: "A";
@@ -571,300 +571,341 @@
 }
 
 
-/* pressionado */
+.custom .button::after {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    line-height: 58px;
+
+    text-align: center;
+
+    color: var(--c-white);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    text-shadow:
+        0 1px 2px #000;
+}
+
+
+.custom .a {
+    top: 142px;
+    left: 71px;
+}
+
+
+.custom .b {
+    top: 71px;
+    right: 0;
+}
+
+
+.custom .x {
+    top: 71px;
+    left: 0;
+}
+
+
+.custom .y {
+    top: 0;
+    left: 71px;
+}
+
 
 .custom .button.pressed {
+    transform:
+        translateY(4px);
+
+    border-color:
+        var(--c-rgb);
+
     background:
         radial-gradient(
             circle,
-            #45474b 0%,
-            #232529 48%,
-            #101114 100%
+            #4a4d52 0%,
+            #2b2e32 43%,
+            #111316 100%
         );
-
-    border-color: var(--rgb);
-
-    transform: translateY(4px);
 
     box-shadow:
         inset 0 3px 7px rgba(0,0,0,0.65),
-        0 0 12px var(--rgb-soft);
+        0 0 13px var(--c-rgb-light);
 }
+
 
 .custom .button.pressed::after {
     color: #ffffff;
 
     text-shadow:
-        0 0 7px var(--rgb);
+        0 0 7px var(--c-rgb);
 }
 
 
-/* =========================================================
+/* ==========================================================
    ANALÓGICOS
-========================================================= */
+========================================================== */
 
 .custom .sticks {
     position: absolute;
 
-    width: 365px;
-    height: 108px;
+    width: 364px;
+    height: 105px;
 
-    left: 206px;
-    top: 309px;
-
-    z-index: 25;
+    top: 328px;
+    left: 210px;
 }
+
 
 .custom .stick {
     position: absolute;
 
-    width: 108px;
-    height: 108px;
+    width: 105px;
+    height: 105px;
 
     box-sizing: border-box;
 
     border-radius: 50%;
 
+    border:
+        3px solid #4d5158;
+
     background:
         radial-gradient(
-            circle at 50% 45%,
-            #383b40 0%,
-            #25282c 31%,
-            #111317 59%,
-            #08090a 100%
+            circle at 48% 42%,
+            #3e4248 0%,
+            #292c31 30%,
+            #17191c 57%,
+            #090a0c 100%
         );
 
-    border:
-        3px solid #4b4e55;
-
     box-shadow:
-        inset 0 7px 10px rgba(255,255,255,0.06),
-        inset 0 -7px 12px rgba(0,0,0,0.65),
-        0 4px 8px rgba(0,0,0,0.5);
-
-    transition:
-        border-color 0.08s linear,
-        box-shadow 0.08s linear;
+        inset 0 6px 9px rgba(255,255,255,0.055),
+        inset 0 -7px 10px rgba(0,0,0,0.68),
+        0 4px 8px rgba(0,0,0,0.50);
 }
 
 
-/* anel RGB dos analógicos */
+/* anel externo */
 
 .custom .stick::before {
     content: "";
 
     position: absolute;
 
-    left: 7px;
-    top: 7px;
+    left: 8px;
+    top: 8px;
 
-    width: 88px;
-    height: 88px;
+    width: 83px;
+    height: 83px;
 
     border-radius: 50%;
 
     border:
-        3px solid rgba(255,36,36,0.45);
+        2px solid rgba(255,31,45,0.38);
 
     box-shadow:
-        0 0 8px rgba(255,36,36,0.28);
-
-    pointer-events: none;
+        0 0 7px rgba(255,31,45,0.25);
 }
 
 
-/* textura superior */
+/* textura */
 
 .custom .stick::after {
     content: "";
 
     position: absolute;
 
-    left: 21px;
-    top: 21px;
+    left: 20px;
+    top: 20px;
 
-    width: 60px;
-    height: 60px;
+    width: 59px;
+    height: 59px;
 
     border-radius: 50%;
 
     background:
         repeating-radial-gradient(
             circle,
-            rgba(255,255,255,0.055) 0 2px,
-            transparent 2px 6px
+            rgba(255,255,255,0.045) 0 1px,
+            transparent 1px 5px
         );
 
-    opacity: 0.55;
-
-    pointer-events: none;
+    opacity: 0.65;
 }
 
 
 /* posições */
 
 .custom .stick.left {
-    left: 0;
     top: 0;
+    left: 0;
 }
+
 
 .custom .stick.right {
-    left: 257px;
     top: 0;
+    left: 259px;
 }
 
 
-/* stick pressionado */
+/* sticks pressionados */
 
 .custom .stick.pressed {
-    border-color: var(--rgb);
+    border-color:
+        var(--c-rgb);
 
     box-shadow:
-        inset 0 5px 10px rgba(0,0,0,0.6),
-        0 0 16px var(--rgb-soft);
+        inset 0 6px 10px rgba(0,0,0,0.68),
+        0 0 15px var(--c-rgb-mid);
 }
 
 
-/* =========================================================
+.custom .stick.pressed::before {
+    border-color:
+        var(--c-rgb);
+}
+
+
+/* ==========================================================
    D-PAD
-========================================================= */
+========================================================== */
 
 .custom .dpad {
     position: absolute;
 
-    width: 147px;
-    height: 147px;
+    width: 140px;
+    height: 132px;
 
-    left: 70px;
-    top: 189px;
-
-    z-index: 18;
+    top: 192px;
+    left: 74px;
 }
+
+
+/* partes */
 
 .custom .face {
     position: absolute;
 
     box-sizing: border-box;
 
+    border:
+        2px solid #4d5157;
+
     background:
         linear-gradient(
             145deg,
-            #4a4d52,
-            #26282c 55%,
-            #111316
+            #4d5156,
+            #2a2d32 52%,
+            #131518 100%
         );
 
-    border:
-        2px solid #52555b;
-
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.10),
-        inset 0 -4px 7px rgba(0,0,0,0.50),
-        0 3px 5px rgba(0,0,0,0.4);
+        inset 0 1px 0 rgba(255,255,255,0.09),
+        inset 0 -4px 7px rgba(0,0,0,0.55),
+        0 3px 5px rgba(0,0,0,0.42);
 
     transition:
-        transform 0.06s ease,
-        border-color 0.06s ease,
-        box-shadow 0.06s ease;
+        transform 0.05s linear,
+        box-shadow 0.05s linear,
+        border-color 0.05s linear;
 }
 
 
-/* D-pad */
+/* vertical */
 
 .custom .face.up,
 .custom .face.down {
-    width: 45px;
-    height: 57px;
+    width: 38px;
+    height: 52px;
 }
+
+
+/* horizontal */
 
 .custom .face.left,
 .custom .face.right {
-    width: 57px;
-    height: 45px;
+    width: 52px;
+    height: 38px;
 }
 
+
+/* cima */
+
 .custom .face.up {
-    left: 51px;
+    left: 50px;
     top: 0;
 
     border-radius:
-        10px 10px 4px 4px;
+        9px 9px 3px 3px;
 }
+
+
+/* baixo */
 
 .custom .face.down {
-    left: 51px;
-    bottom: 0;
+    left: 50px;
+    top: 79px;
 
     border-radius:
-        4px 4px 10px 10px;
+        3px 3px 9px 9px;
 }
+
+
+/* esquerda */
 
 .custom .face.left {
     left: 0;
-    top: 51px;
+    top: 47px;
 
     border-radius:
-        10px 4px 4px 10px;
+        9px 3px 3px 9px;
 }
+
+
+/* direita */
 
 .custom .face.right {
     right: 0;
-    top: 51px;
+    top: 47px;
 
     border-radius:
-        4px 10px 10px 4px;
+        3px 9px 9px 3px;
 }
 
 
-/* centro visual do D-pad */
-
-.custom .dpad::after {
-    content: "";
-
-    position: absolute;
-
-    width: 44px;
-    height: 44px;
-
-    left: 51px;
-    top: 51px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #383b3f,
-            #15171a 70%
-        );
-
-    border: 2px solid #45484d;
-
-    pointer-events: none;
-}
-
-
-/* D-pad pressionado */
+/* pressionado */
 
 .custom .face.pressed {
-    border-color: var(--gold);
+    transform:
+        translateY(4px);
+
+    border-color:
+        var(--c-gold);
 
     box-shadow:
-        inset 0 3px 7px rgba(0,0,0,0.6),
-        0 0 11px rgba(201,166,75,0.45);
-
-    transform: translateY(3px);
+        inset 0 3px 7px rgba(0,0,0,0.60),
+        0 0 11px rgba(208,170,84,0.42);
 }
 
 
-/* =========================================================
-   BOTÕES EXTRAS / FIGHTSTICK
-========================================================= */
+/* ==========================================================
+   BOTÕES DE TRIGGER ALTERNATIVOS
+========================================================== */
 
 .custom .trigger-button.left,
 .custom .trigger-button.right {
     position: absolute;
 }
+
 
 .custom .trigger-button.left.pressed,
 .custom .trigger-button.right.pressed {
@@ -872,9 +913,9 @@
 }
 
 
-/* =========================================================
+/* ==========================================================
    FSTICK
-========================================================= */
+========================================================== */
 
 .custom .fstick {
     position: absolute;
@@ -882,9 +923,10 @@
     width: 140px;
     height: 132px;
 
-    left: 74px;
     top: 192px;
+    left: 74px;
 }
+
 
 .custom .fstick.up,
 .custom .fstick.down,
@@ -898,90 +940,83 @@
 }
 
 
-/* =========================================================
-   DETALHES DECORATIVOS
-========================================================= */
+/* ==========================================================
+   ACABAMENTO CENTRAL
+========================================================== */
 
-/* linhas centrais */
-
-.controller.custom .sticks::before {
+.custom .sticks::before {
     content: "";
 
     position: absolute;
 
     left: 181px;
-    top: -184px;
+    top: -157px;
 
-    width: 3px;
-    height: 148px;
+    width: 2px;
+    height: 120px;
 
     background:
         linear-gradient(
             180deg,
             transparent,
-            rgba(255,255,255,0.04),
+            rgba(255,255,255,0.035),
             transparent
         );
 
-    opacity: 0.6;
+    pointer-events: none;
 }
 
 
-/* pequena marca GameSir */
+/* LOGOTIPO */
 
-.controller.custom .sticks::after {
+.custom .sticks::after {
     content: "GAMESIR";
 
     position: absolute;
 
-    left: 137px;
-    top: -158px;
+    left: 135px;
+    top: -183px;
 
-    width: 95px;
+    width: 94px;
 
     text-align: center;
+
+    color:
+        rgba(218,221,225,0.26);
 
     font-family:
         Arial,
         Helvetica,
         sans-serif;
 
-    font-size: 10px;
-
-    letter-spacing: 2px;
+    font-size: 9px;
 
     font-weight: 700;
 
-    color: rgba(205,208,212,0.28);
+    letter-spacing: 2.2px;
 
     pointer-events: none;
 }
 
 
-/* =========================================================
-   RESPONSIVIDADE DO SKIN
-========================================================= */
+/* ==========================================================
+   ANIMAÇÕES DE PRESSÃO
+========================================================== */
 
-@media (max-width: 800px) {
-    .controller.custom {
-        transform-origin: top left;
-    }
-}
-
-
-/* =========================================================
-   SUPORTE ÀS ANIMAÇÕES DE PRESS
-========================================================= */
-
-.custom .pressed {
+.custom .button,
+.custom .face,
+.custom .bumper,
+.custom .back,
+.custom .start,
+.custom .stick {
     transition:
-        transform 0.05s ease,
-        opacity 0.05s ease,
-        box-shadow 0.05s ease,
-        border-color 0.05s ease;
+        transform 0.055s ease,
+        box-shadow 0.055s ease,
+        border-color 0.055s ease,
+        opacity 0.055s linear;
 }
 
 
-/* =========================================================
+/* ==========================================================
    FIM
-========================================================= */
+========================================================== */
